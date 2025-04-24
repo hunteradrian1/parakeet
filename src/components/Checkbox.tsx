@@ -1,17 +1,27 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import Colors from '../constants/Colors';
+import Spacing from '../constants/Spacing';
+import Typography from '../constants/Typography';
 
 interface Props {
   checked: boolean;
-  label:   string;
+  label: string;
   onToggle: () => void;
 }
 
 export default function Checkbox({ checked, label, onToggle }: Props) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onToggle}>
-      <View style={[styles.box, checked && styles.boxChecked]}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onToggle}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked }}
+      accessibilityLabel={label}
+      accessibilityHint={checked ? `Checked` : `Unchecked`}
+      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+    >
+      <View style={[styles.box, checked && styles.boxChecked]}>        
         {checked && <Text style={styles.tick}>✓</Text>}
       </View>
       <Text style={styles.label}>{label}</Text>
@@ -20,13 +30,18 @@ export default function Checkbox({ checked, label, onToggle }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container:   { flexDirection:'row', alignItems:'center', marginBottom:20 },
-  box:         {
-    width:20, height:20, borderWidth:1,
-    borderColor:Colors.border, borderRadius:4,
-    marginRight:10, justifyContent:'center', alignItems:'center'
+  container: { flexDirection: 'row', alignItems: 'center', marginBottom: Spacing.medium },
+  box: {
+    width: 28,
+    height: 28,
+    borderWidth: 2,
+    borderColor: Colors.parakeetBlue,
+    borderRadius: 6,
+    marginRight: Spacing.small,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  boxChecked:  { backgroundColor:Colors.accent, borderColor:Colors.accent },
-  tick:        { color:'#fff', fontSize:14 },
-  label:       { flex:1, fontSize:12, color:'#555' },
+  boxChecked: { backgroundColor: Colors.warmYellow, borderColor: Colors.warmYellow },
+  tick: { color: Colors.background, fontSize: Typography.fontSmall },
+  label: { fontSize: Typography.fontMedium, color: Colors.text, flexShrink: 1 },
 });

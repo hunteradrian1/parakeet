@@ -1,28 +1,22 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigator';
+import Button from '../components/Button';
 import Colors from '../constants/Colors';
+import Spacing from '../constants/Spacing';
+import Typography from '../constants/Typography';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
-
 export default function DashboardScreen({ navigation }: Props) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Dashboard Placeholder</Text>
-      <TouchableOpacity
-        style={[styles.button,{backgroundColor:Colors.primary}]}
-        onPress={()=>navigation.navigate('CreateProfile')}
-      >
-        <Text style={styles.buttonText}>Create Profile</Text>
-      </TouchableOpacity>
+    <View style={styles.container} accessible accessibilityRole="header" accessibilityLabel="Dashboard Screen">
+      <Text style={styles.title}>Welcome to Parakeet!</Text>
+      <Button title="Create Profile" onPress={() => navigation.navigate('CreateProfile')} accessibilityLabel="Go to Create Profile" accessibilityHint="Opens profile creation screen" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:  { flex:1, backgroundColor:'#fff', justifyContent:'center', alignItems:'center' },
-  text:       { fontSize:20, marginBottom:20 },
-  button:     { paddingVertical:12, paddingHorizontal:20, borderRadius:8 },
-  buttonText: { color:Colors.text, fontSize:16, fontWeight:'600' },
+  container: { flex: 1, backgroundColor: Colors.background, justifyContent: 'center', alignItems: 'center', padding: Spacing.large },
+  title: { fontSize: Typography.fontXLarge, color: Colors.text, marginBottom: Spacing.large, textAlign: 'center' },
 });

@@ -18,7 +18,7 @@ export default function Checkbox({ checked, label, onToggle }: Props) {
       accessibilityRole="checkbox"
       accessibilityState={{ checked }}
       accessibilityLabel={label}
-      accessibilityHint={checked ? `Checked` : `Unchecked`}
+      accessibilityHint={checked ? 'Checked' : 'Unchecked'}
       hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
     >
       <View style={[styles.box, checked && styles.boxChecked]}>        
@@ -30,7 +30,7 @@ export default function Checkbox({ checked, label, onToggle }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flexDirection: 'row', alignItems: 'center', marginBottom: Spacing.medium },
+  container: { minHeight: 44, flexDirection: 'row', alignItems: 'center', marginBottom: Spacing.medium },
   box: {
     width: 28,
     height: 28,

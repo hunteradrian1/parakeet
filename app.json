@@ -4,17 +4,9 @@
     "slug": "parakeet",
     "version": "1.0.0",
     "sdkVersion": "52.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "assets/*"
-    ],
+    "platforms": ["ios","android","web"],
+    "assetBundlePatterns": ["assets/*"],
     "jsEngine": "jsc",
-    "plugins": [
-      "expo-asset"
-    ]
+    "plugins": ["expo-asset"]
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, KeyboardTypeOptions } from 'react-native';
 import Colors from '../constants/Colors';
 import Spacing from '../constants/Spacing';
 import Typography from '../constants/Typography';
@@ -10,13 +10,21 @@ interface Props {
   value: string;
   onChangeText: (text: string) => void;
   secure?: boolean;
-  keyboardType?: any;
+  keyboardType?: KeyboardTypeOptions;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 }
 
-export default function TextInputField({ label, placeholder, value, onChangeText, secure = false, keyboardType = 'default', autoCapitalize = 'none' }: Props) {
+export default function TextInputField({
+  label,
+  placeholder,
+  value,
+  onChangeText,
+  secure = false,
+  keyboardType = 'default',
+  autoCapitalize = 'none',
+}: Props) {
   return (
-    <View style={styles.container} accessible accessibilityRole="text" accessibilityLabel={label}>
+    <View style={styles.container} accessible accessibilityLabel={label}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         style={styles.input}
@@ -39,7 +47,7 @@ const styles = StyleSheet.create({
   label: { fontSize: Typography.fontSmall, color: Colors.text, marginBottom: Spacing.small },
   input: {
     backgroundColor: Colors.background,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: Colors.parakeetBlue,
     borderRadius: 24,
     padding: Spacing.medium,
